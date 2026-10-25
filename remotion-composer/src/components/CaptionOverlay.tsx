@@ -90,7 +90,7 @@ const PageRenderer: React.FC<{
   direction: "ltr" | "rtl";
 }> = ({ page, fontSize, color, highlightColor, backgroundColor, fontFamily, wordSeparator, direction }) => {
   const frame = useCurrentFrame();
-  const { fps } = useVideoConfig();
+  const { fps, width, height } = useVideoConfig();
 
   const currentMs = page.startMs + (frame / fps) * 1000;
 
@@ -106,7 +106,7 @@ const PageRenderer: React.FC<{
       style={{
         justifyContent: "flex-end",
         alignItems: "center",
-        paddingBottom: 80,
+        paddingBottom: height > width ? 235 : 80,
       }}
     >
       <div
@@ -173,7 +173,7 @@ export const CaptionOverlay: React.FC<CaptionOverlayProps> = ({
   wordSeparator = " ",
   direction = "auto",
 }) => {
-  const { fps } = useVideoConfig();
+  const { fps, width, height } = useVideoConfig();
   const pages = buildPages(words, wordsPerPage);
   const resolvedDirection =
     direction === "auto" ? detectDirection(words) : direction;

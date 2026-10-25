@@ -601,7 +601,7 @@ const SceneRenderer: React.FC<{ cut: Cut; theme: ThemeConfig }> = ({ cut, theme 
   if (cut.type === "callout" && cut.text) {
     return maybeWrapWithBg(
       <CalloutBox
-        text={cut.text} type={cut.callout_type} title={cut.title}
+        text={cut.text} type={cut.callout_type} title={cut.title} fontSize={cut.fontSize}
         borderColor={accent} backgroundColor={cut.backgroundColor || theme.surfaceColor}
         textColor={textColor} containerBackgroundColor={bgColor}
       />
@@ -624,8 +624,8 @@ const SceneRenderer: React.FC<{ cut: Cut; theme: ThemeConfig }> = ({ cut, theme 
         subtitle={cut.heroSubtitle || cut.subtitle}
         accentColor={accent}
         textColor={textColor}
-        subtitleColor={theme.mutedTextColor}
-        scrimBackground={heroScrim(theme)}
+        subtitleColor={cut.backgroundColor ? "#D8E7F7" : theme.mutedTextColor}
+        scrimBackground={cut.backgroundColor || heroScrim(theme)}
       />
     );
   }

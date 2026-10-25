@@ -34,6 +34,7 @@ import contextlib
 import json
 import hashlib
 import logging
+import os
 import secrets
 import shutil
 import subprocess
@@ -2061,6 +2062,9 @@ class VideoCompose(BaseTool):
             ]
             if public_dir is not None:
                 cmd.append(f"--public-dir={public_dir}")
+            browser_executable = os.environ.get("REMOTION_BROWSER_EXECUTABLE")
+            if browser_executable:
+                cmd.append(f"--browser-executable={browser_executable}")
 
             # Apply media profile dimensions
             if profile_name:

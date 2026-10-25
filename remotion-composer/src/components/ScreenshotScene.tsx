@@ -256,7 +256,7 @@ export const ScreenshotScene: React.FC<ScreenshotSceneProps> = ({
   const cursorAbs = abs(cursorPos);
 
   return (
-    <AbsoluteFill style={{ background: "#000" }}>
+    <AbsoluteFill style={{ background: "#F7FAFC" }}>
       {/* Backdrop */}
       <Img
         src={resolveAsset(backgroundImage)}

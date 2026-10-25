@@ -46,7 +46,7 @@ export const CalloutBox: React.FC<CalloutBoxProps> = ({
   containerBackgroundColor = "#FFFFFF",
 }) => {
   const frame = useCurrentFrame();
-  const { fps } = useVideoConfig();
+  const { fps, width, height } = useVideoConfig();
 
   const defaults = TYPE_DEFAULTS[type];
   const resolvedBorder = borderColor || defaults.border;
@@ -120,7 +120,7 @@ export const CalloutBox: React.FC<CalloutBoxProps> = ({
         style={{
           opacity,
           transform: `translateX(${slideX}px) scale(${scale})`,
-          width: "72%",
+          width: height > width ? "88%" : "72%",
           maxWidth: 1380,
           position: "relative",
         }}
